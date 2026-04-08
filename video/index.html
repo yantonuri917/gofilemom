@@ -6,243 +6,243 @@
 <meta name="referrer" content="no-referrer">    
     <title>gofilemom</title></title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0f0f0f; }
-        ::-webkit-scrollbar-thumb { background: #3f3f3f; border-radius: 10px; }
-        
-        body { background-color: #0f0f0f; color: #f1f1f1; scroll-behavior: smooth; }
-
-        /* Container Iklan */
-        .ad-top-wrapper {
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header-bg {
+            background-color: #0f0f0f;
+        }
+        .text-gray-custom {
+            color: #aaaaaa;
+        }
+        .video-container {
+            width: 100%;
+            background: #000;
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        .video-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .video-card:active {
+            transform: scale(0.96);
+        }
+        .tag {
+            background-color: #222;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .watermark-overlay {
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+        /* Style untuk kontainer iklan */
+        .ad-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 15px 0;
-            background-color: #0f0f0f;
-            min-height: 60px;
+            padding: 10px 0;
+            background-color: #000;
+            min-height: 70px;
         }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem 1rem;
-        }
-
-        @media (min-width: 1024px) {
-            .sidebar-mode-container { display: flex; flex-direction: row; gap: 24px; }
-            .main-content-area { flex: 1; }
-            .sidebar-list-area { width: 380px; flex-shrink: 0; }
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 12px;
-            background-color: #1a1a1a;
-            transition: all 0.3s ease;
-        }
-
-        .video-card video { 
-            width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s;
-        }
-
-        .active-card video { opacity: 1; }
-        .active-card .video-container { border-radius: 0px; }
-        
-        .small-card { display: flex; gap: 10px; cursor: pointer; margin-bottom: 12px; }
-        .small-card .video-container { width: 150px; height: 85px; flex-shrink: 0; border-radius: 8px; }
-        .small-card h3 { font-size: 13px; line-height: 1.2; font-weight: 600; }
-
-        #toast {
-            visibility: hidden; background-color: #333; color: #fff; border-radius: 8px;
-            padding: 12px 20px; position: fixed; z-index: 100; bottom: 20px; left: 20px; font-size: 13px;
-        }
-        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 20px; opacity: 1; } }
-        @keyframes fadeout { from { opacity: 1; } to { opacity: 0; } }
     </style>
 </head>
-<body class="antialiased">
+<body class="pb-20">
 
-    <header class="fixed top-0 left-0 right-0 h-14 bg-[#0f0f0f] flex items-center justify-between px-4 z-50 border-b border-[#272727]">
+    <!-- Header / Navbar -->
+    <header class="header-bg p-3 flex items-center justify-between sticky top-0 z-50 border-b border-gray-800">
         <div class="flex items-center gap-4">
-            <i class="fa-solid fa-bars text-lg cursor-pointer p-2 hover:bg-[#272727] rounded-full"></i>
-            <div onclick="window.location.reload()" class="flex items-center gap-1 cursor-pointer">
-                <i class="fa-brands fa-youtube text-[#ff0000] text-3xl"></i>
-                <span class="font-bold text-xl tracking-tighter">gofile.mom</span>
-            </div>
+            <i class="fas fa-bars text-xl cursor-pointer"></i>
+            <div class="text-red-600 font-bold text-2xl tracking-tighter">gofile.mom</div>
         </div>
-        <div class="hidden md:flex flex-1 max-w-[600px] mx-10">
-            <div class="flex w-full items-center bg-[#121212] border border-[#303030] rounded-full px-4 py-1.5">
-                <input type="text" placeholder="" class="w-full bg-transparent focus:outline-none text-sm px-2">
-                <i class="fa-solid fa-magnifying-glass text-gray-500 mr-2"></i>
-            </div>
-        </div>
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-xs font-bold">A</div>
+        <div class="flex items-center gap-5 text-xl">
+            <i class="fas fa-video"></i>
+            <i class="fas fa-user-circle text-gray-400"></i>
+            <i class="fas fa-search"></i>
         </div>
     </header>
 
-    <div class="pt-14 pb-10">
-        
-        <!-- BAGIAN IKLAN ATAS -->
-        <div class="ad-top-wrapper">
-            <div id="ad-slot-320x50">
-                <script>
-                    atOptions = {
-                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
-                        'format' : 'iframe',
-                        'height' : 50,
-                        'width' : 320,
-                        'params' : {}
-                    };
-                </script>
-                <script src="https://behindcanary.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
-            </div>
-        </div>
-
-        <div class="px-4 lg:px-8">
-            <div id="content-layout">
-                <!-- Area Beranda -->
-                <div id="home-view" class="grid-layout mt-4">
-                    <!-- Cards via JS -->
-                </div>
-
-                <!-- Area Menonton -->
-                <div id="watch-view" class="hidden">
-                    <div class="sidebar-mode-container mt-4">
-                        <div class="main-content-area">
-                            <div class="bg-black rounded-xl overflow-hidden shadow-2xl aspect-video border border-[#272727]">
-                                <video id="main-player" controls autoplay class="w-full h-full"></video>
-                            </div>
-                            <div class="mt-4">
-                                <h1 id="main-title" class="text-xl font-bold"></h1>
-                                <div class="flex flex-wrap items-center justify-between gap-4 mt-4">
-                                    <div class="flex items-center gap-3">
-                                        <div id="chan-avatar" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center font-bold">V</div>
-                                        <div>
-                                            <h3 id="main-channel" class="font-bold text-sm"></h3>
-                                            <p class="text-gray-400 text-[11px]">Subscribers Aktif</p>
-                                        </div>
-                                        <button class="bg-white text-black px-4 py-2 rounded-full font-bold text-xs ml-4">Subscribe</button>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <button onclick="handleDownload()" class="bg-[#272727] hover:bg-[#3f3f3f] px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 text-[#3ea6ff]">
-                                            <i class="fa-solid fa-download"></i> Unduh
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sisi Kanan: Daftar Kecil -->
-                        <div class="sidebar-list-area">
-                            <h2 class="text-xs font-bold mb-4 text-gray-500 uppercase tracking-widest">Video Rekomendasi</h2>
-                            <div id="sidebar-grid"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Ad Space Under Header -->
+    <div class="ad-container">
+        <!-- Script Iklan dari User -->
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
     </div>
 
-    <div id="toast">Redirecting to download server...</div>
+    <!-- Konten Utama -->
+    <main class="max-w-screen-xl mx-auto">
+        
+        <!-- Pemutar Video Utama -->
+        <section class="video-container relative group">
+            <video id="mainPlayer" controls preload="metadata">
+                <source id="videoSource" src="https://video.twimg.com/amplify_video/2014087403485691904/vid/avc1/1280x720/zT-nUYLpIaxhz80T.mp4?tag=21#t=5" type="video/mp4">
+                Browser Anda tidak mendukung tag video.
+            </video>
+            
+            <div class="watermark-overlay p-4 flex flex-col justify-end items-start opacity-70">
+                <div class="flex items-center gap-2 mb-2">
+                     <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center font-bold text-xl italic text-white border border-white/30">M</div>
+                     <div class="text-[10px] leading-tight text-white font-mono">
+                         <div class="font-bold">MDAPP12.COM</div>
+                     </div>
+                </div>
+            </div>
+            <div class="absolute bottom-12 right-4 text-yellow-500 font-bold text-xs bg-black/60 px-2 py-0.5 rounded pointer-events-none z-10">
+                gofile.mom
+            </div>
+        </section>
+
+        <!-- Informasi Video -->
+        <section class="p-4">
+            <h1 id="mainTitle" class="text-xl font-bold mb-2">Exclusive Video Clip #1</h1>
+            <div class="flex items-center gap-4 text-sm text-gray-custom">
+                <span><i class="far fa-clock mr-1"></i> Auto</span>
+                <span><i class="fas fa-desktop mr-1"></i> HD Available</span>
+            </div>
+        </section>
+
+        <!-- Channel Section -->
+        <section class="px-4 py-1 flex items-center justify-between flex-wrap gap-3">
+            <div class="flex items-center gap-3">
+                <div class="bg-yellow-500 p-1.5 rounded text-black text-xs font-bold cursor-pointer">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full cursor-pointer">
+                    <i class="fas fa-cloud-upload-alt text-blue-400"></i>
+                    <span class="text-sm font-medium">higem16659</span>
+                </div>
+                <button class="bg-red-600 px-4 py-1.5 rounded text-sm font-bold">
+                    Subscribe <span class="text-xs font-normal opacity-80">107</span>
+                </button>
+            </div>
+            <span class="bg-gray-800 px-3 py-1 rounded text-xs text-gray-300">Amateur</span>
+        </section>
+
+        <!-- Tombol Interaksi -->
+        <section class="grid grid-cols-7 gap-1 px-2 py-4 mt-4 border-y border-gray-800/50">
+            <button class="flex flex-col items-center p-2"><i class="far fa-thumbs-up"></i><span class="text-[10px] mt-1">2.1k</span></button>
+            <button class="flex flex-col items-center p-2"><i class="far fa-thumbs-down"></i><span class="text-[10px] mt-1">12</span></button>
+            <button class="flex flex-col items-center p-2 bg-red-600 rounded"><i class="far fa-comment"></i></button>
+            <button class="flex flex-col items-center p-2"><i class="far fa-image"></i></button>
+            <button class="flex flex-col items-center p-2"><i class="fas fa-share-alt"></i></button>
+            <button class="flex flex-col items-center p-2"><i class="fas fa-plus-square"></i></button>
+            <button class="flex flex-col items-center p-2 text-red-500"><i class="fas fa-download"></i></button>
+        </section>
+
+        <!-- Related Videos Title -->
+        <section class="p-4">
+            <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Videos related</h2>
+        </section>
+
+        <!-- Kisi Video Terkait -->
+        <section id="relatedGrid" class="grid grid-cols-2 gap-3 px-3">
+            <!-- Rendered by JS -->
+        </section>
+    </main>
 
     <script>
-        const videoData = [
-            { id: 1, title: "新人 興味本位で応募してきたエッチな素人娘、実は人気コスプレ配信者！SNSの世界を飛び出しまさかのAVデビュー！", channel: "Vision Studio", src: "https://video.twimg.com/amplify_video/2006456041136173056/vid/avc1/1280x720/INKGE6bHbPmI8F8q.mp4?tag=21" },
-            { id: 2, title: " 暗示洗脳 生徒とラブラブセックスしているつもりが実はオヤジとヤってる可哀想な変態女教師", channel: "Future Pulse", src: "https://video.twimg.com/amplify_video/2010344361880641536/vid/avc1/1280x720/YUzeg-dr6oZvxBtu.mp4?tag=21" },
-            { id: 3, title: "夫に浮気されて欲求不満だけど…妊娠したい人妻は絶倫男の濃厚精子を求めて自宅種付けソープランドへ ", channel: "Travel Hub", src: "https://video.twimg.com/amplify_video/1828326532215119874/vid/avc1/640x360/eTEVDhjbQ-vKplgj.mp4?tag=14" },
-            { id: 4, title: "大嫌いな元カレが入院したので、美人看護師が性処理を強要。婚約中なのにクズ男のチンポに我慢できず、病院でセックスしちゃう", channel: "jav ido", src: "https://video.twimg.com/amplify_video/1824013259051286528/vid/avc1/640x360/UCT_--2XP86KDeSK.mp4?tag=14" },
-            { id: 5, title: "出張メンズエステ盗撮9 店長に内緒で生フェラチオサービス", channel: "Design Lab", src: "https://video.twimg.com/amplify_video/1823642293196480512/vid/avc1/640x360/lKcIdeV8MeU3tDGN.mp4?tag=14" },
-            { id: 6, title: "ノーブラで誘惑してくる彼女のお姉さんに興奮して性欲モンスター化！コンドーム1箱使い切ってもヤリまくる葵いぶき 4K", channel: "Lumina Art", src: "https://video.twimg.com/amplify_video/2014155647684661248/vid/avc1/1280x720/VS5UkzqhLn93L0Gt.mp4?tag=21" },
-            { id: 7, title: "パンストマニアの標的となった美脚女教師。狂気のストーカーの執拗な性行為は心を壊すまで終わらない。", channel: "Urban Sky", src: "https://video.twimg.com/amplify_video/2018869702848823296/vid/avc1/640x360/SddWBCSYD3QsHHOO.mp4?tag=21" },
-            { id: 8, title: "Sharing A Room With My Sexy Boss On A Business Trip ", channel: "Zenith Nature", src: "https://video.twimg.com/amplify_video/2009881239487209472/vid/avc1/854x480/eGRqHsWJ8Zur88-E.mp4?tag=21" }        ];
+        const videoList = [
+            "https://video.twimg.com/amplify_video/1829592544289669148/vid/avc1/640x360/ShZOEb6UxK4s62oY.mp4?tag=14",
+            "https://video.twimg.com/amplify_video/2007425869518909440/vid/avc1/1280x720/2svwFVBo1WPhnZ3y.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2006042086945193985/vid/avc1/1280x720/2UIoBrqjvg6Sw7B1.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/1916966308471562240/vid/avc1/640x360/iRwNyrJg_nGx6Bet.mp4?tag=16",
+            "https://video.twimg.com/amplify_video/2010344361880641536/vid/avc1/1280x720/YUzeg-dr6oZvxBtu.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/1984165749263626245/vid/avc1/1280x720/y0V3M3ncbNH4SG_0.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2012062342675382273/vid/avc1/642x360/HSdZS9r3UP0y2-k4.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2009881239487209472/vid/avc1/854x480/eGRqHsWJ8Zur88-E.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2018863763563388928/vid/avc1/640x360/6L9zE9mol-Wotc5y.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2018869451152908288/vid/avc1/1280x720/z0tdJi5fNBBPX1iq.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2018869702848823296/vid/avc1/640x360/SddWBCSYD3QsHHOO.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2020884792548696064/vid/avc1/854x480/yfu2xh6FhF9cJs0H.mp4?tag=21"
+        ];
 
-        function renderInitial() {
-            const grid = document.getElementById('home-view');
-            grid.innerHTML = videoData.map(v => `
-                <div class="video-card group cursor-pointer" onclick="playVideo(${v.id})">
-                    <div class="video-container shadow-lg">
-                        <video class="preview-video" muted playsinline loop preload="metadata">
-                            <source src="${v.src}" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="flex gap-3 mt-3">
-                        <div class="w-8 h-8 rounded-full bg-gray-800 flex-shrink-0 flex items-center justify-center font-bold text-[10px] uppercase">${v.channel[0]}</div>
-                        <div>
-                            <h3 class="font-bold text-sm text-white line-clamp-2 leading-tight group-hover:text-red-500 transition-colors">${v.title}</h3>
-                            <p class="text-gray-400 text-[11px] mt-1">${v.channel}</p>
-                        </div>
+        const video = document.getElementById('mainPlayer');
+        const videoSource = document.getElementById('videoSource');
+        const mainTitle = document.getElementById('mainTitle');
+        const relatedGrid = document.getElementById('relatedGrid');
+        
+        let needsReset = true;
+
+        videoList.forEach((url, index) => {
+            const card = document.createElement('div');
+            card.className = 'video-card flex flex-col';
+            card.innerHTML = `
+                <div class="relative aspect-video bg-gray-900 rounded overflow-hidden">
+                    <video class="w-full h-full object-cover pointer-events-none" muted preload="metadata">
+                        <source src="${url}#t=5" type="video/mp4">
+                    </video>
+                    <span class="absolute bottom-1 right-1 bg-black/80 text-[10px] px-1 rounded font-bold">HD</span>
+                </div>
+                <div class="py-2">
+                    <h3 class="text-xs font-bold line-clamp-2 leading-tight">Exclusive Video Clip #${index + 1}</h3>
+                    <div class="text-[10px] text-gray-500 mt-1 flex justify-between">
+                        <span><i class="fas fa-play mr-1"></i> ${Math.floor(Math.random() * 50) + 1}k</span>
+                        <span class="text-yellow-500"><i class="fas fa-star mr-1"></i> ${Math.floor(Math.random() * 20) + 80}%</span>
                     </div>
                 </div>
-            `).join('');
-            initAutoPreview();
-        }
+            `;
+            
+            card.onclick = () => {
+                videoSource.src = url + "#t=5";
+                mainTitle.innerText = `Exclusive Video Clip #${index + 1}`;
+                needsReset = true;
+                video.load();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                video.play().catch(() => {});
+            };
+            
+            relatedGrid.appendChild(card);
+        });
 
-        function renderSidebar(excludeId) {
-            const sidebar = document.getElementById('sidebar-grid');
-            sidebar.innerHTML = videoData.filter(v => v.id !== excludeId).map(v => `
-                <div class="small-card group" onclick="playVideo(${v.id})">
-                    <div class="video-container shadow-md">
-                        <video muted playsinline preload="metadata">
-                            <source src="${v.src}" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="flex flex-col flex-1">
-                        <h3 class="text-white line-clamp-2 group-hover:text-red-500 transition-colors">${v.title}</h3>
-                        <p class="text-gray-400 text-[10px] mt-1">${v.channel}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function initAutoPreview() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const video = entry.target.querySelector('video');
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active-card');
-                        video.play().catch(() => {});
-                    } else {
-                        entry.target.classList.remove('active-card');
-                        video.pause();
-                    }
-                });
-            }, { threshold: 0.6 });
-            document.querySelectorAll('.video-card').forEach(card => observer.observe(card));
-        }
-
-        function playVideo(id) {
-            const video = videoData.find(v => v.id === id);
-            document.getElementById('home-view').classList.add('hidden');
-            document.getElementById('watch-view').classList.remove('hidden');
-            const player = document.getElementById('main-player');
-            player.src = video.src;
-            document.getElementById('main-title').innerText = video.title;
-            document.getElementById('main-channel').innerText = video.channel;
-            document.getElementById('chan-avatar').innerText = video.channel[0];
-            renderSidebar(id);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function handleDownload() {
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(() => {
-                toast.className = toast.className.replace("show", "");
-                window.open(`https://video-twimg.click/amplify_video/1877977333833060352/vid/avc1/1280x720/D4K4DjbiJ9WmfODs.mp4?tag=14{encodeURIComponent(title)}`, '_blank');
-            }, 1800);
-        }
-
-        window.onload = renderInitial;
-  
+        video.addEventListener('play', () => {
+            if (needsReset) {
+                video.currentTime = 0;
+                needsReset = false;
+            }
+        });
     </script>
+
 <!-- HISTATS -->
 <script>
 var _Hasync=_Hasync||[];
