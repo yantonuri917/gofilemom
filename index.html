@@ -119,7 +119,7 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Iklan Top -->
+    <
     <div class="ad-sticky-top">
         <script type="text/javascript">
             atOptions = {
@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        <!-- Daftar Video -->
+        
         <div class="mt-8 space-y-8">
             <script>
                 const redirectLink = "https://gofile.fil3.fun/next";
@@ -201,7 +201,7 @@
                                     <span class="text-[10px] text-gray-500"><i class="fas fa-clock mr-1"></i> ${index === 0 ? 'only just' : (index + 1) + 'h ago'}</span>
                                 </div>
                                 <button onclick="window.location.href='${redirectLink}'" class="bg-gray-700 hover:bg-blue-600 text-white px-5 py-2 rounded-xl text-[11px] font-bold transition-all shadow-md flex items-center gap-2">
-                                    <i class="fas fa-cloud-download-alt"></i> Unduh
+                                    <i class="fas fa-cloud-download-alt"></i>
                                 </button>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
         </div>
 
         <div class="mt-16 text-center text-gray-600 text-[10px] font-bold tracking-widest uppercase border-t border-gray-800 pt-8 mb-20">
-            — Akhir Daftar —
+            — gofile.mom —
         </div>
     </main>
 
@@ -226,20 +226,20 @@
             
             if (container.classList.contains('expanded')) return;
 
-            // Tutup video lain yang sedang terbuka
+            
             document.querySelectorAll('.video-container').forEach(c => {
                 if (c.id !== containerId && c.classList.contains('expanded')) {
                     c.classList.remove('expanded');
                     const otherIframe = c.querySelector('iframe');
-                    // Reset src untuk menghentikan video lain
+                    
                     otherIframe.src = otherIframe.src.split('?')[0];
                 }
             });
 
-            // Perbesar kontainer
+            
             container.classList.add('expanded');
             
-            // Tambahkan parameter autoplay saat di klik
+            
             setTimeout(() => {
                 iframe.src = baseUrl + "?autoplay=1";
             }, 300);
