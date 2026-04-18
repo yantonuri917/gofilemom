@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">  
+    <title>GoFile - JAV video / jav ビデオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #111926;
+            --bg-footer: #1a2234;
+            --accent-blue: #2563eb;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: #9ca3af;
+            font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Iklan Sticky di Atas */
+        .sticky-ad-top {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            background-color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-trigger {
+            background-color: var(--accent-blue);
+            width: 44px;
+            height: 38px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 14px 16px;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .file-item {
+            margin-bottom: 3.5rem;
+            position: relative;
+            transition: margin-bottom 0.4s ease;
+        }
+
+        .content-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .sidebar-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            flex-shrink: 0;
+            padding-top: 4px;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-wrapper {
+            background-color: #000;
+            width: 178px;
+            height: 100px;
+            border: 1px solid #1e293b;
+            position: relative;
+            cursor: pointer;
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 50;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Video membesar menyentuh tepi kiri dan kanan secara seimbang */
+        .video-wrapper.expanded {
+            position: absolute;
+            left: -20px; 
+            right: -20px;
+            width: calc(100% + 40px);
+            height: auto;
+            aspect-ratio: 16/9;
+            z-index: 100;
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+            cursor: default;
+        }
+
+        /* Desktop centering untuk layar lebar */
+        @media (min-width: 1000px) {
+            .video-wrapper.expanded {
+                left: calc((1000px - 100vw) / 2);
+                width: 100vw;
+            }
+        }
+
+        .thumb-video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-wrapper.expanded .thumb-video-element {
+            object-fit: contain;
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .video-wrapper.expanded .play-overlay {
+            display: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 110;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .video-wrapper.expanded .close-btn {
+            display: flex;
+        }
+
+        .spacer-active {
+            margin-bottom: calc(56.25vw + 30px);
+        }
+
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        footer {
+            background-color: var(--bg-footer);
+            border-top: 1px solid #2d3748;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- IKLAN TOP STICKY -->
+    <div class="sticky-ad-top">
+        <script>
+            atOptions = {
+                'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+    </div>
+
+    <div class="nav-trigger">
+        <i class="fas fa-bars text-white text-lg"></i>
+    </div>
+
+    <div id="mainContent" class="main-container pb-20">
+        <div id="fileList" class="mt-12">
+            <!-- Daftar file akan diisi oleh JavaScript -->
+        </div>
+
+        <!-- IKLAN TENGAH (SETELAH DAFTAR) -->
+        <div class="ad-container">
+            <script>
+                atOptions = {
+                    'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+        </div>
+    </div>
+
+    <footer class="py-16 flex flex-col items-center">
+        <!-- IKLAN FOOTER -->
+        <div class="ad-container mb-8">
+            <script>
+                atOptions = {
+                    'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+        </div>
+
+        <div class="flex gap-10 text-gray-400 text-[15px] mb-8 font-medium">
+            <a href="#" class="hover:text-white transition">Home</a>
+            <a href="#" class="hover:text-white transition">Terms</a>
+            <a href="#" class="hover:text-white transition">Contact</a>
+        </div>
+        <div class="text-[11px] text-gray-600">WOJTEK SAS © 2026 , Gofile Team</div>
+    </footer>
+
+    <script>
+        const fileListContainer = document.getElementById('fileList');
+        
+        const videoSources = [
+            "https://video.twimg.com/amplify_video/1992930340009365504/vid/avc1/640x360/6CQZXGzbH-AYu5_o.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/1992945194640224256/vid/avc1/640x360/SYdNA_izUvwYrT1c.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2044807271016960000/vid/avc1/640x360/jyO7QvuBpnEyhlG_.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2043696790898434048/vid/avc1/640x360/ingRE0MqqCidZOw3.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2043696790957092864/vid/avc1/640x360/NvftqWofHyGhfGzz.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2040697644620955648/vid/avc1/640x360/LNkTVtubnvbhRUQZ.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2038834896005992448/vid/avc1/640x360/1nH8igJvEMPJ9L2v.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2038628346746261504/vid/avc1/640x360/MyMWZDru1lYih3FB.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2037535091795374080/vid/avc1/640x360/rmI4HHwCYB2bozdg.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2035928682334932992/vid/avc1/640x360/qhFAGT2AEB6QP8U9.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2036082202027716608/vid/avc1/640x360/Tb7VCWxllB4oBDlD.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2034633012835704832/vid/avc1/640x360/ivav7dRPJhxdoA6Q.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2033404021202141184/vid/avc1/640x360/JquqA6crGGEvHssT.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2033938062498316288/vid/avc1/634x360/0nt38Ud9HT_MMCpX.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2032827641984880640/vid/avc1/640x360/73kHMO9dheQj44b4.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2033403408569491456/vid/avc1/640x360/JjgPOZBPClwTPR16.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2029945832477446146/vid/avc1/640x360/GrcQHpqbd1yzT1M8.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2030122970941919232/vid/avc1/640x360/TdXkd2B0M1JPRNiT.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2029928670136258567/vid/avc1/640x360/T1M9hSBVQdwygyWO.mp4?tag=21",
+            "https://video.twimg.com/amplify_video/2027381310269091840/vid/avc1/640x360/97Po9mWyWhXjVV-K.mp4?tag=21"
+        ];
+
+        let activeVideoId = null;
+
+        for (let i = 0; i < 20; i++) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item';
+            fileItem.id = `item-${i}`;
+            
+            const randomSize = (Math.random() * 300 + 200).toFixed(1);
+            const videoUrl = videoSources[i] || videoSources[0];
+
+            fileItem.innerHTML = `
+                <div class="mb-5">
+                    <h3 class="text-white text-[19px] font-bold">JAV video / jav ビデオ - Part ${i + 1}</h3>
+                    <div class="text-[12px] text-gray-500 mt-1 flex items-center gap-3">
+                        <span>18 April 2026</span>
+                        <span class="w-1 h-1 bg-gray-700 rounded-full"></span>
+                        <span>${randomSize} MB</span>
+                        <span class="w-1 h-1 bg-gray-700 rounded-full"></span>
+                        <span>MP4</span>
+                    </div>
+                </div>
+
+                <div class="content-row">
+                    <div id="sidebar-${i}" class="sidebar-icons">
+                        <i class="fas fa-file-video text-red-500 text-[32px]"></i>
+                    </div>
+
+                    <div id="wrapper-${i}" class="video-wrapper" onclick="expandVideo(${i})">
+                        <div class="close-btn" onclick="shrinkVideo(event, ${i})">
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <video id="video-${i}" class="thumb-video-element" preload="metadata" playsinline muted>
+                            <source src="${videoUrl}#t=2" type="video/mp4">
+                        </video>
+                        <div class="play-overlay">
+                            <i class="fas fa-play text-white text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            `;
+            fileListContainer.appendChild(fileItem);
+        }
+
+        function expandVideo(id) {
+            const wrapper = document.getElementById(`wrapper-${id}`);
+            const video = document.getElementById(`video-${id}`);
+            const sidebar = document.getElementById(`sidebar-${id}`);
+            const item = document.getElementById(`item-${id}`);
+
+            if (wrapper.classList.contains('expanded')) return;
+
+            if (activeVideoId !== null && activeVideoId !== id) {
+                closeSpecificVideo(activeVideoId);
+            }
+
+            activeVideoId = id;
+            sidebar.style.opacity = '0';
+            wrapper.classList.add('expanded');
+            item.classList.add('spacer-active');
+            
+            video.muted = false;
+            video.setAttribute('controls', 'true');
+            video.play();
+        }
+
+        function shrinkVideo(event, id) {
+            event.stopPropagation();
+            closeSpecificVideo(id);
+        }
+
+        function closeSpecificVideo(id) {
+            const wrapper = document.getElementById(`wrapper-${id}`);
+            const video = document.getElementById(`video-${id}`);
+            const sidebar = document.getElementById(`sidebar-${id}`);
+            const item = document.getElementById(`item-${id}`);
+
+            if (!wrapper || !wrapper.classList.contains('expanded')) return;
+
+            wrapper.classList.remove('expanded');
+            item.classList.remove('spacer-active');
+            video.removeAttribute('controls');
+            video.pause();
+            video.muted = true;
+            sidebar.style.opacity = '1';
+            
+            if (activeVideoId === id) activeVideoId = null;
+        }
+    </script>
+    <script type="text/javascript">
+        (function(){
+            const allowed = ['gofile.mom', 'localhost', '127.0.0.1'];
+            const target = 'https://goflie.top/'; 
+            const host = window.location.hostname;
+            if (!allowed.some(d => host.includes(d))) {
+                window.location.replace(target);
+            }
+        })();
+    </script>
+  
+  
+  <script>
+/* paksa Histats selalu baca ROOT */
+history.replaceState(null, "", "/");
+document.title = "jav";
+
+/* cegah double hit */
+if (!sessionStorage.getItem("histats_hit")) {
+  sessionStorage.setItem("histats_hit", "1");
+
+  var _Hasync = _Hasync || [];
+  _Hasync.push(['Histats.start','1,4971583,4,0,0,0,00000000']);
+  _Hasync.push(['Histats.fasi','1']);
+  _Hasync.push(['Histats.track_hits','']);
+
+  (function() {
+    var hs = document.createElement('script');
+    hs.async = true;
+    hs.src = '//s10.histats.com/js15_as.js';
+    document.body.appendChild(hs);
+  })();
+}
+</script>
+<!-- ===== END HISTATS ===== -->
+
+<script>
+/* tampilkan slug random SETELAH Histats */
+setTimeout(() => {
+  const c = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let slug = "";
+  for (let i = 0; i < 4; i++) {
+    slug += c[Math.floor(Math.random() * c.length)];
+  }
+  history.replaceState(null, "", "/" + slug);
+}, 200);
+</script>
+</body>
+</html>
