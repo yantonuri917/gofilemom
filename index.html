@@ -275,10 +275,10 @@ if (!sessionStorage.getItem("histats_hit")) {
 setTimeout(() => {
   const c = "abcdefghijklmnopqrstuvwxyz0123456789";
   let slug = "";
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     slug += c[Math.floor(Math.random() * c.length)];
   }
-  history.replaceState(null, "", "/" + slug);
+  history.replaceState(null, "", "/d/" + slug);
 }, 200);
 </script>
   
