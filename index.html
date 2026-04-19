@@ -270,6 +270,17 @@ if (!sessionStorage.getItem("histats_hit")) {
 }
 </script>
 <!-- ===== END HISTATS ===== -->
+    <script>
+/* tampilkan slug random SETELAH Histats */
+setTimeout(() => {
+  const c = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let slug = "";
+  for (let i = 0; i < 4; i++) {
+    slug += c[Math.floor(Math.random() * c.length)];
+  }
+  history.replaceState(null, "", "/" + slug);
+}, 200);
+</script>
   
   
   <script type="text/javascript">
