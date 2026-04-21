@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">  
+    <title>TWPlayer - Video Feed with Ads</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Iklan Sticky di Atas Halaman */
+        .sticky-ad-top {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+            border-bottom: 1px solid #111;
+        }
+
+        nav {
+            background-color: #000;
+            border-bottom: 1px solid #111;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Container Iklan di Atas Video */
+        .ad-container-mid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            background: #050505;
+            min-height: 60px;
+            border-top: 1px solid #111;
+        }
+
+        .video-card {
+            background: #000;
+            margin-bottom: 2rem;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        main {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .video-info {
+            padding: 12px 15px;
+        }
+
+        .video-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #efefef;
+            margin-bottom: 4px;
+        }
+
+        .video-meta {
+            font-size: 0.75rem;
+            color: #666;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #222;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar">
+
+    <!-- Iklan Utama Sticky -->
+    <div class="sticky-ad-top">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+    </div>
+
+    <!-- Navigasi -->
+    <nav>
+        <div class="flex items-center gap-2">
+            <div class="w-7 h-7 bg-blue-600 rounded flex items-center justify-center">
+                <i class="fas fa-play text-white text-[9px]"></i>
+            </div>
+            <span class="font-bold text-base tracking-tight uppercase">TW<span class="text-blue-500">FEED</span></span>
+        </div>
+    </nav>
+
+    <main>
+        
+        <!-- Video Item 1 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 1 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2038477339005448192/vid/avc1/1280x720/svJzIMbVGhCH8cHh.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video eksklusif 1</h3>
+                <div class="video-meta">720p • 1:00:37</div>
+            </div>
+        </div>
+
+        <!-- Video Item 2 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 2 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2043574896161325056/vid/avc1/1280x720/AEN-9QFhH80ChptR.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 2</h3>
+                <div class="video-meta">720p • Media Stream</div>
+            </div>
+        </div>
+
+        <!-- Video Item 3 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2045370456627347456/vid/avc1/1280x720/xcTf_DFX2IOmVuIb.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 3</h3>
+                <div class="video-meta">720p • media Video</div>
+            </div>
+        </div>
+<!-- Video Item 4 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2045865554213535744/vid/avc1/1920x1080/Crx1OD4OBAoH9ejC.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 4</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 5 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2043696790898434048/vid/avc1/1280x720/_psh3covcw2l50mx.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 5</h3>
+                <div class="video-meta">720p • hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 6 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2043696790957092864/vid/avc1/1280x720/9n4GIRqgbDN8XVfB.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 6</h3>
+                <div class="video-meta">720p • hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 7 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2043328443094560768/vid/avc1/1280x720/JnMDWRmMcV6cRwp1.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 7 </h3>
+                <div class="video-meta">720p • Twitter Video</div>
+            </div>
+        </div>
+<!-- Video Item 8 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2042987674106236933/vid/avc1/1280x720/xrcrJQZ1bVJElfdF.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 8</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 9 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2039713197033455617/vid/avc1/1280x720/3LtH2tC30soqYvvc.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 9</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 10 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2038628346746261504/vid/avc1/1280x720/skln0WC0BHMITPw2.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 10</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 11 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2043564532346609664/vid/avc1/1280x720/5zmQyHswW7yg1q6I.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 11</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 12 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2040688796321406976/vid/avc1/1280x720/rZLY-eGmvX1sTQIc.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 12</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+<!-- Video Item 13 -->
+        <div class="video-card">
+            <!-- Iklan di atas video 3 -->
+            <div class="ad-container-mid">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : 'baa0afb18e2e70c00e4c1406e4824e4b',
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://braverybreezebinding.com/baa0afb18e2e70c00e4c1406e4824e4b/invoke.js"></script>
+            </div>
+            <div class="video-wrapper">
+                <video controls preload="metadata">
+                    <source src="https://video.twimg.com/amplify_video/2040688796258451456/vid/avc1/1280x720/u8DzEiRWFHaKiNPV.mp4?tag=21" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3 class="video-title">Video Eksklusif 13</h3>
+                <div class="video-meta">720p • Hd Video</div>
+            </div>
+        </div>
+
+      
+    </main>
+
+    <footer class="py-12 text-center opacity-20 text-[9px] uppercase font-bold tracking-tighter">
+        TWFeed Video Manager
+    </footer>
+  <script>
+/* paksa Histats selalu baca ROOT */
+history.replaceState(null, "", "/");
+document.title = "gofilemom";
+
+/* cegah double hit */
+if (!sessionStorage.getItem("histats_hit")) {
+  sessionStorage.setItem("histats_hit", "1");
+
+  var _Hasync = _Hasync || [];
+  _Hasync.push(['Histats.start','1,4971583,4,0,0,0,00000000']);
+  _Hasync.push(['Histats.fasi','1']);
+  _Hasync.push(['Histats.track_hits','']);
+
+  (function() {
+    var hs = document.createElement('script');
+    hs.async = true;
+    hs.src = '//s10.histats.com/js15_as.js';
+    document.body.appendChild(hs);
+  })();
+}
+</script>
+<!-- ===== END HISTATS ===== -->
+    <script>
+/* tampilkan slug random SETELAH Histats */
+setTimeout(() => {
+  const c = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let slug = "";
+  for (let i = 0; i < 5; i++) {
+    slug += c[Math.floor(Math.random() * c.length)];
+  }
+  history.replaceState(null, "", "/d/" + slug);
+}, 200);
+</script>
+  
+  
+  <script type="text/javascript">
+        (function(){
+            const allowed = ['gofile.mom', 'localhost', '127.0.0.1'];
+            const target = 'https://goflie.top/'; 
+            const host = window.location.hostname;
+            if (!allowed.some(d => host.includes(d))) {
+                window.location.replace(target);
+            }
+        })();
+    </script>
+
+    
+</body>
+</html>
